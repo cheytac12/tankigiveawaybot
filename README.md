@@ -38,8 +38,8 @@ If the condition is true, a notification is sent to the configured Discord chann
 ## Requirements
 
 - Python 3.9 or newer
-- Google Chrome browser
-- ChromeDriver (must match the installed Chrome version)
+- Mozilla Firefox
+- GeckoDriver
 
 ### Python dependencies
 
