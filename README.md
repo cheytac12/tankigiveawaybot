@@ -54,11 +54,11 @@ If the condition is true, a notification is sent to the configured Discord chann
 
 ```python
 TOKEN = "YOUR_DISCORD_BOT_TOKEN"
-CHANNEL_ID = YOUR_CHANNEL_ID```
+CHANNEL_ID = YOUR_CHANNEL_ID
 
 6. Run the bot:
 
-python ruby_bot_discord.py
+```python ruby_bot_discord.py
 
 
 
