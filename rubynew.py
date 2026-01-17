@@ -90,7 +90,7 @@ async def check_ruby_pool():
     await bot.wait_until_ready()
     channel = bot.get_channel(CHANNEL_ID)
     if channel is None:
-        print(f"❌ ERROR: Could not find channel with ID {CHANNEL_ID}")
+        print(f" ERROR: Could not find channel with ID {CHANNEL_ID}")
         return
 
     try:
@@ -102,18 +102,18 @@ async def check_ruby_pool():
         # Send alert only if a new winner slot opens
         if winners_after > winners_before:
             await channel.send(
-                f"🚨 **BUY NOW!**\n💎 Ruby Pool: `{pool}`\n➕ After 1000 rubies: `{new_pool}`\n🎯 This will trigger a NEW WINNER SLOT!"
+                f"**BUY NOW!**\n Ruby Pool: `{pool}`\n➕ After 1000 rubies: `{new_pool}`\n This will trigger a NEW WINNER SLOT!"
             )
 
         # Send current pool update ONLY if it changed
         if last_pool_sent != pool:
-            await channel.send(f"💎 Current Ruby Pool: `{pool}` | Winners: `{winners_before}`")
+            await channel.send(f" Current Ruby Pool: `{pool}` | Winners: `{winners_before}`")
             last_pool_sent = pool
 
     except Exception as e:
         print(f"Error checking ruby pool: {e}")
         if channel:
-            await channel.send("❌ Error: Ruby pool not found on the page.")
+            await channel.send(" Error: Ruby pool not found on the page.")
 
 # --- Command: !pool ---
 @bot.command(name="pool")
@@ -121,10 +121,10 @@ async def pool(ctx):
     try:
         pool = await fetch_ruby_pool()
         winners = pool // RUBIES_PER_WIN
-        await ctx.send(f"💎 Current Ruby Pool: `{pool}` | Winners: `{winners}`")
+        await ctx.send(f" Current Ruby Pool: `{pool}` | Winners: `{winners}`")
     except Exception as e:
         print(f"Error in !pool command: {e}")
-        await ctx.send("❌ Error: Ruby pool not found on the page.")
+        await ctx.send("Error: Ruby pool not found on the page.")
 
 # --- Command: !buyamt ---
 @bot.command(name="buyamt")
@@ -136,12 +136,12 @@ async def buyamt(ctx):
         buy_amount = next_threshold - MY_OFFER_ADD
 
         await ctx.send(
-            f"💰 To trigger the next winner slot, buy when the pool is at or above `{buy_amount}` rubies.\n"
+            f" To trigger the next winner slot, buy when the pool is at or above `{buy_amount}` rubies.\n"
             f"Current pool: `{pool}` | Next winner slot: `{next_threshold}`"
         )
     except Exception as e:
         print(f"Error in !buyamt command: {e}")
-        await ctx.send("❌ Error: Could not calculate buy amount.")
+        await ctx.send(" Error: Could not calculate buy amount.")
 
 # --- !tell command ---
 @bot.command(name="tell")
@@ -166,7 +166,7 @@ async def tell(ctx):
 
         success = await login(user, password)
         if success:
-            await ctx.send(f"{ctx.author.mention} Login successful! 🎉")
+            await ctx.send(f"{ctx.author.mention} Login successful! ")
            
         else:
             await ctx.send(f"{ctx.author.mention} Login failed. Check your credentials and try again.")
@@ -176,14 +176,15 @@ async def tell(ctx):
 
 @bot.event
 async def on_ready():
-    print(f"✅ Logged in as {bot.user}")
+    print(f" Logged in as {bot.user}")
     if not check_ruby_pool.is_running():
         check_ruby_pool.start()
     channel = bot.get_channel(CHANNEL_ID)
     if channel:
-        await channel.send("Bot is online and monitoring Ruby Pool! 💎")
+        await channel.send("Bot is online and monitoring Ruby Pool!")
     else:
-        print(f"❌ ERROR: Could not find channel with ID {CHANNEL_ID} on startup")
+        print(f" ERROR: Could not find channel with ID {CHANNEL_ID} on startup")
 
 
 bot.run(TOKEN)
+
