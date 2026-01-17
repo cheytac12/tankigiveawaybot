@@ -59,7 +59,7 @@ CHANNEL_ID = YOUR_CHANNEL_ID
 
 6. Run the bot:
 ```python
-python ruby_bot_discord.py
+python rubynew.py
 
 
 
