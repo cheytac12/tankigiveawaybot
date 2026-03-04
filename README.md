@@ -1,4 +1,4 @@
-# RubyNotif — Discord Giveaway Alert Bot
+# RubyNotif Discord Giveaway Alert Bot
 
 RubyNotif is a Discord bot that tracks the live Ruby Fund on the Tanki Online Summer Major 2025 giveaway page and notifies users when purchasing the 1390-ruby offer (adding 1000 rubies to the pool) would result in a new winner being added.
 
@@ -40,9 +40,6 @@ If the condition is true, a notification is sent to the configured Discord chann
 - Python 3.9 or newer
 - Mozilla Firefox
 - GeckoDriver
-
-### Python dependencies
-
 
 ## Setup
 
